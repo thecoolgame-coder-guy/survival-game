@@ -206,41 +206,6 @@ game_pole_3.penup()
 game_pole_3.goto(200, -303)
 game_pole_3.shapesize(5, 0.5, 9)
 game_pole_3.setheading(180)
-
-#all the functions played in the codes
-# Admin commands triggered by pressing a key
-def open_admin_panel():
-    global player_hp, bullet_number, food_number
-    
-    # Opens a clean pop-up box right over your game window
-    admin = wn.textinput("Admin Panel", "Please give command:")
-    
-    # If the user clicks 'Cancel' or closes the box, stop here
-    if admin is None:
-        wn.listen()  # Re-focus keyboard controls back to the game
-        return
-
-    # Use elif so all commands belong to the same check
-    if admin == 'full hp. pass= 203':
-        player_hp += 3
-        heart.color('#39FF14')
-
-    elif admin == 'give bullet. pass= 203':
-        bullet_number += 99
-        bulletPen.clear()
-        bulletPen.write(f'Bullet:{bullet_number}', align="right", font=("Courier", 20, "normal"))
-
-    elif admin == 'give food. pass= 203':
-        food_number += 99
-        foodPen.clear()
-        foodPen.write(f'food:{food_number}', align="right", font=("Courier", 20, "normal"))
-
-    else:
-        print('you are not an admin. play truthfully')
-    
-    # IMPORTANT: Re-enable keyboard listening after the pop-up closes
-    wn.listen()
-
         
 #player based functions
 #player taking damage from zombies
@@ -901,10 +866,8 @@ wn.onkeypress(shoot, 's')
 wn.onkeypress(shoot, 'S')
 wn.onkeypress(command_eating, 'e')
 wn.onkeypress(command_eating, 'E')
-# Use onkeyrelease for toggling so holding 'u' doesn't flicker the gun
 wn.onkeyrelease(hold_unhold_weapon, 'u')
 wn.onkeyrelease(hold_unhold_weapon, 'U')
-wn.onkeypress(open_admin_panel, "*")
 wn.onkeypress(command_key_break_tree, 'b')
 wn.onkeypress(command_key_break_tree, 'B')
 
